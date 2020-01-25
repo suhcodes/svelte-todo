@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  let name = \"\";\n  let listTasks = [];\n\n  function handleAddTask() {\n    let text = document.getElementById(\"newTaskInput\").value;\n    listTasks = listTasks.concat({ done: false, task: text });\n    document.getElementById(\"newTaskInput\").value = \"\";\n  }\n\n  function handleRemoveDoneTasks() {\n    listTasks = listTasks.filter(t => !t.done);\n  }\n</script>\n\n<style>\n  main {\n    padding: 1em;\n    max-width: 340px;\n    width: 100%;\n    margin: 0 auto;\n  }\n\n  h1 {\n    text-align: center;\n    color: #ff3e00;\n    text-transform: uppercase;\n    font-size: 2em;\n    font-weight: 100;\n  }\n\n  p {\n    text-align: center;\n  }\n\n  ul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n  }\n\n  h2 {\n    font-size: 1em;\n  }\n\n  .remove-done-tasks {\n    text-align: center;\n  }\n\n  .new-task {\n    display: flex;\n  }\n\n  .done {\n    opacity: 0.5;\n  }\n\n  @media (min-width: 640px) {\n    main {\n      max-width: none;\n    }\n  }\n</style>\n\n<main>\n  <h1>Hello {name === '' ? ':)' : name}</h1>\n\n  <p>Welcome to your Svelte developed to do list!</p>\n\n  <ul>\n    {#each listTasks as tasks}\n      <li class={tasks.done ? 'done' : 'todo'}>\n        <input type=\"checkbox\" bind:checked={tasks.done} />\n        {tasks.task}\n      </li>\n    {/each}\n  </ul>\n\n  <br />\n\n  <div class=\"remove-done-tasks\">\n    <button on:click={handleRemoveDoneTasks}>Clear Done</button>\n  </div>\n\n  <h2>Enter a new task bellow!</h2>\n  <div class=\"new-task\">\n    <input type=\"text\" id=\"newTaskInput\" />\n    <button on:click={handleAddTask}>Add</button>\n  </div>\n</main>\n"
+  ],
+  "names": [],
+  "mappings": "AAgBE,IAAI,cAAC,CAAC,AACJ,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,CAAC,CAAC,IAAI,AAChB,CAAC,AAED,EAAE,cAAC,CAAC,AACF,UAAU,CAAE,MAAM,CAClB,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,CAAC,cAAC,CAAC,AACD,UAAU,CAAE,MAAM,AACpB,CAAC,AAED,EAAE,cAAC,CAAC,AACF,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,AACZ,CAAC,AAED,EAAE,cAAC,CAAC,AACF,SAAS,CAAE,GAAG,AAChB,CAAC,AAED,kBAAkB,cAAC,CAAC,AAClB,UAAU,CAAE,MAAM,AACpB,CAAC,AAED,SAAS,cAAC,CAAC,AACT,OAAO,CAAE,IAAI,AACf,CAAC,AAED,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,GAAG,AACd,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzB,IAAI,cAAC,CAAC,AACJ,SAAS,CAAE,IAAI,AACjB,CAAC,AACH,CAAC"
+}
